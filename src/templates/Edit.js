@@ -11,7 +11,7 @@ class Edit extends Component {
     this.deleteTask = this.deleteTask.bind(this);
 
     this.state = {
-      currentTutorial: {
+      currentTask: {
         _id: null,
         title: "",
         description: "",
@@ -31,8 +31,8 @@ class Edit extends Component {
 
     this.setState(function (prevState) {
       return {
-        currentTutorial: {
-          ...prevState.currentTutorial,
+        currentTask: {
+          ...prevState.currentTask,
           title: title,
         },
       };
@@ -43,8 +43,8 @@ class Edit extends Component {
     const description = e.target.value;
 
     this.setState((prevState) => ({
-      currentTutorial: {
-        ...prevState.currentTutorial,
+      currentTask: {
+        ...prevState.currentTask,
         description: description,
       },
     }));
@@ -54,7 +54,7 @@ class Edit extends Component {
     TasksDataService.get(id)
       .then((response) => {
         this.setState({
-          currentTutorial: response.data,
+          currentTask: response.data,
         });
         console.log(response.data);
         console.log(this.props.match.params.id);
@@ -65,11 +65,8 @@ class Edit extends Component {
   }
 
   updateTask() {
-    console.log(this.state.currentTutorial.id);
-    TasksDataService.update(
-      this.state.currentTutorial._id,
-      this.state.currentTutorial
-    )
+    console.log(this.state.currentTask.id);
+    TasksDataService.update(this.state.currentTask._id, this.state.currentTask)
       .then((response) => {
         console.log(response.data);
         this.props.history.push("/list");
@@ -84,7 +81,7 @@ class Edit extends Component {
   }
 
   deleteTask() {
-    TasksDataService.delete(this.state.currentTutorial._id)
+    TasksDataService.delete(this.state.currentTask._id)
       .then((response) => {
         console.log(response.data);
         this.props.history.push("/list");
@@ -95,11 +92,11 @@ class Edit extends Component {
   }
 
   render() {
-    const { currentTutorial } = this.state;
+    const { currentTask } = this.state;
 
     return (
       <div class="editdelete">
-        {currentTutorial ? (
+        {currentTask ? (
           <div className="edit-form">
             <h1 className="h1updatedelete">Update or delete your tasks!</h1>
             <form>
@@ -109,7 +106,7 @@ class Edit extends Component {
                   type="text"
                   className="form-control"
                   id="title"
-                  value={currentTutorial.title}
+                  value={currentTask.title}
                   onChange={this.onChangeTitle}
                 />
 
@@ -118,7 +115,7 @@ class Edit extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentTutorial.description}
+                  value={currentTask.description}
                   onChange={this.onChangeDescription}
                 />
               </div>

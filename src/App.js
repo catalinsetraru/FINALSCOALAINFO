@@ -23,7 +23,7 @@ function App() {
             <Route path="/add/" component={AddTask} />
             <Route path="/view/:id" component={ViewTask} />
             <PrivateRoute path="/task/:id" component={Edit} />
-            <PrivateRoute exact path="/" component={Homepage} />
+            <Route exact path="/" component={Homepage} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={Login} />
           </Switch>
