@@ -40,7 +40,7 @@ class ViewTask extends Component {
       <div className="edit-form">
         <h1>{currentTutorial.title}</h1>
         <p>{currentTutorial.description}</p>
-        <img src={currentTutorial.taskImg}></img>
+        <img src={currentTutorial.taskImg} className="fetchedimg"></img>
       </div>
     );
   }

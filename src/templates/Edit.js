@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import TasksDataService from "./taks.services";
+import Navbar from "./Layout/Navbar";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangetaskImg = this.onChangetaskImg.bind(this);
     this.getTask = this.getTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
@@ -15,7 +17,7 @@ class Edit extends Component {
         _id: null,
         title: "",
         description: "",
-        published: false,
+        taskImg: "",
       },
       message: "",
     };
@@ -46,6 +48,17 @@ class Edit extends Component {
       currentTask: {
         ...prevState.currentTask,
         description: description,
+      },
+    }));
+  }
+
+  onChangetaskImg(e) {
+    const taskImg = e.target.value;
+
+    this.setState((prevState) => ({
+      currentTask: {
+        ...prevState.currentTask,
+        taskImg: taskImg,
       },
     }));
   }
@@ -95,7 +108,8 @@ class Edit extends Component {
     const { currentTask } = this.state;
 
     return (
-      <div class="editdelete">
+      <div className="editdelete">
+        <Navbar />
         {currentTask ? (
           <div className="edit-form">
             <h1 className="h1updatedelete">Update or delete your tasks!</h1>
@@ -117,6 +131,14 @@ class Edit extends Component {
                   id="description"
                   value={currentTask.description}
                   onChange={this.onChangeDescription}
+                />
+                <label htmlFor="taskImg">Image</label>
+                <input
+                  type="taskImg"
+                  className="form-control"
+                  id="taskImg"
+                  value={currentTask.taskImg}
+                  onChange={this.onChangetaskImg}
                 />
               </div>
             </form>

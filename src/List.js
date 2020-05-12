@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import { Link } from "react-router-dom";
 import TasksDataService from "./templates/taks.services";
+import Navbar from "./templates/Layout/Navbar";
 
 class List extends Component {
   constructor() {
@@ -51,6 +52,8 @@ class List extends Component {
 
     return (
       <div className="App Container">
+        <Navbar />
+
         <table className="table">
           <thead>
             <tr>

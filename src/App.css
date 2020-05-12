@@ -15,15 +15,21 @@ th {
   color: white;
 }
 
-.edit,
-.delete {
+.edit {
   transition-duration: 0.4s;
   border: 4px solid #4c8baf;
   background-color: white;
   border-radius: 5px;
   margin-left: 5px;
 }
-
+.delete {
+  transition-duration: 0.4s;
+  border: 4px solid #4c8baf;
+  background-color: white;
+  border-radius: 5px;
+  margin-left: 25px;
+  margin-top: 3px;
+}
 .edit:hover {
   background-color: #21aa0f;
   border: 4px solid #21aa0f;
@@ -76,8 +82,8 @@ th {
 }
 
 .editdelete {
-  padding: 150px;
   background-color: #4c8baf;
+  padding-bottom: 120px;
 }
 
 .edit-form {
@@ -124,4 +130,36 @@ th {
 .h1updatedelete {
   text-align: center;
   padding: 35px;
+}
+
+.coverimg {
+  width: 100%;
+  position: relative;
+}
+
+.loginform {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%;
+}
+
+.header {
+  width: 150px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  right: 50%;
+  margin: auto;
+}
+
+.submitlogin {
+  width: 60px;
+  transition-duration: 0.4s;
+  border: 4px solid #4c8baf;
+  background-color: #4c8baf;
+  border-radius: 5px;
+  margin-left: 50px;
+  margin-top: 10px;
 }

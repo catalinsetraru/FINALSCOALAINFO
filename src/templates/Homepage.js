@@ -2,13 +2,15 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import app from "../base";
+import Navbar from "./Layout/Navbar";
+import cover from "./cover.jpg";
 
 function Home() {
   return (
     <div className="Nav">
-      <Link to="/list">List</Link>
-      <button onClick={() => app.auth().signOut()}>Sign out</button>
-      <button onClick={() => app.auth().Login()}>Log in</button>
+      <Navbar />
+      <ajaxApp />
+      <img src={cover} alt="cover" className="coverimg"></img>
     </div>
   );
 }

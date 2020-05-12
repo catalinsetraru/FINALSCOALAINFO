@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "./base";
+import Navbar from "./templates/Layout/Navbar";
+import cover from "./templates/cover.jpg";
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
@@ -21,18 +23,24 @@ const SignUp = ({ history }) => {
 
   return (
     <div>
-      <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <Navbar />
+      <div>
+        <img src={cover} alt="cover" className="coverimg"></img>
+        <h1 className="header">Sign up</h1>
+        <form onSubmit={handleSignUp} className="loginform">
+          <label className="email">
+            Email
+            <input name="email" type="email" placeholder="Email" />
+          </label>
+          <label className="password">
+            Password
+            <input name="password" type="password" placeholder="Password" />
+          </label>
+          <button type="submit" className="submitlogin">
+            Sign Up
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

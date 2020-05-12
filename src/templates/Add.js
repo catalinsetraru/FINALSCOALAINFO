@@ -7,14 +7,15 @@ class AddTask extends Component {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.saveTutorial = this.saveTutorial.bind(this);
-    this.newTutorial = this.newTutorial.bind(this);
+    this.onChangetaskImg = this.onChangetaskImg.bind(this);
+    this.saveTask = this.saveTask.bind(this);
+    this.newTask = this.newTask.bind(this);
 
     this.state = {
       id: null,
       title: "",
       description: "",
-      published: false,
+      taskImg: "",
 
       submitted: false,
     };
@@ -32,10 +33,17 @@ class AddTask extends Component {
     });
   }
 
-  saveTutorial() {
+  onChangetaskImg(e) {
+    this.setState({
+      taskImg: e.target.value,
+    });
+  }
+
+  saveTask() {
     var data = {
       title: this.state.title,
       description: this.state.description,
+      taskImg: this.state.taskImg,
     };
 
     TasksDataService.create(data)
@@ -44,9 +52,7 @@ class AddTask extends Component {
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
-          published: response.data.published,
-
-          submitted: true,
+          taskImg: response.data.taskImg,
         });
         console.log(response.data);
         this.props.history.push("/list");
@@ -56,12 +62,12 @@ class AddTask extends Component {
       });
   }
 
-  newTutorial() {
+  newTask() {
     this.setState({
       id: null,
       title: "",
       description: "",
-      published: false,
+      taskImg: "",
 
       submitted: false,
     });
@@ -94,9 +100,19 @@ class AddTask extends Component {
             onChange={this.onChangeDescription}
             name="description"
           />
+          <label htmlFor="taskImg">Image</label>
+          <input
+            type="text"
+            className="form-control"
+            id="taskImg"
+            required
+            value={this.state.taskImg}
+            onChange={this.onChangetaskImg}
+            name="taskImg"
+          />
         </form>
 
-        <button onClick={this.saveTutorial} className="btn-success">
+        <button onClick={this.saveTask} className="btn-success">
           Submit
         </button>
       </div>

@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
+import Navbar from "./templates/Layout/Navbar";
 
 function App() {
   return (
